@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Sign Up</title>
+  </head>
+  <body>
+    <!--signup Code-->
+
+    <h2 id="logo">SausHi7</h2>
+    <div class="signup">
+      <h2>Sign Up</h2>
+      <form id="signup-form">
+        <input
+          type="email"
+          id="signup-email"
+          placeholder="Email"
+          required
+        /><br />
+        <input
+          type="password"
+          id="signup-password"
+          placeholder="Password"
+          required
+        /><br />
+        <button type="submit">Sign Up</button>
+      </form>
+      <p>Already have an account? <a href="login.html">Log in</a></p>
+    </div>
+    <script>
+      document
+        .getElementById("signup-form")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const email = document.getElementById("signup-email").value;
+          const password = document.getElementById("signup-password").value;
+
+          const res = await fetch("http://localhost:5000/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
+          });
+
+          if (res.ok) {
+            alert("Signup successful! You can now log in.");
+            window.location.href = "login.html";
+          } else {
+            alert("Signup failed");
+          }
+        });
+    </script>
+  </body>
+</html>
