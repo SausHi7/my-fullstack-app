@@ -15,7 +15,7 @@
 
     <script>
       // Load protected content
-      fetch("http://localhost:5000/home", {
+      fetch("https://backend.onrender.com/home", {
         credentials: "include",
       })
         .then((res) => {
@@ -26,18 +26,18 @@
           document.getElementById("content").innerText = data.message;
         })
         .catch(() => {
-          window.location.href = "login.html";
+          window.location.href = "index.html";
         });
 
       // Logout function
       document
         .getElementById("logout-btn")
         .addEventListener("click", async () => {
-          await fetch("http://localhost:5000/logout", {
+          await fetch("https://backend.onrender.com/logout", {
             method: "POST",
             credentials: "include",
           });
-          window.location.href = "login.html";
+          window.location.href = "index.html";
         });
     </script>
   </body>
