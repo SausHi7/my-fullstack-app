@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   require("cors")({
-    origin: "http://localhost:5500", // adjust if using a different port
+    origin: "https://frontend.onrender.com", // adjust if using a different port
     credentials: true,
   })
 );
