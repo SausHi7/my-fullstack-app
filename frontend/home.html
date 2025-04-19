@@ -15,7 +15,7 @@
 
     <script>
       // Load protected content
-      fetch("https://backend.onrender.com/home", {
+      fetch("https://my-fullstack-app-zz45.onrender.com/home", {
         credentials: "include",
       })
         .then((res) => {
@@ -33,7 +33,7 @@
       document
         .getElementById("logout-btn")
         .addEventListener("click", async () => {
-          await fetch("https://backend.onrender.com/logout", {
+          await fetch("https://my-fullstack-app-zz45.onrender.com/logout", {
             method: "POST",
             credentials: "include",
           });

@@ -3,7 +3,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const res = await fetch("https://backend.onrender.com/login", {
+  const res = await fetch("https://my-fullstack-app-zz45.onrender.com/login", {
     method: "POST",
     credentials: "include",
     headers: { "Content-Type": "application/json" },
