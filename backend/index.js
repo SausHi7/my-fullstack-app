@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   require("cors")({
-    origin: "https://frontend.onrender.com", // adjust if using a different port
+    origin: "https://my-fullstack-app-1-0bcg.onrender.com", // adjust if using a different port
     credentials: true,
   })
 );
