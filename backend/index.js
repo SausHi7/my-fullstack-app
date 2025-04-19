@@ -14,13 +14,14 @@ app.use(
     credentials: true,
   })
 );
+//  Optional: Get rid of warnings
+mongoose.set("strictQuery", false);
 
+//  Updated MongoDB connect line (without deprecated options)
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("MongoDB connected"));
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log(" MongoDB connected"))
+  .catch((err) => console.error(" MongoDB connection error:", err));
 
 const userSchema = new mongoose.Schema({
   email: String,
@@ -51,8 +52,8 @@ app.post("/login", async (req, res) => {
   res
     .cookie("token", token, {
       httpOnly: true,
-      secure: false, // set to true on Render
-      sameSite: "lax",
+      secure: true, // set to true on Render
+      sameSite: "none",
     })
     .json({ message: "Logged in" });
 });
@@ -68,6 +69,7 @@ function authMiddleware(req, res, next) {
 
   jwt.verify(token, JWT_SECRET, (err, decoded) => {
     if (err) return res.status(403).json({ message: "Invalid token" });
+    console.log("JWT verified:", decoded);
     req.userId = decoded.userId;
     next();
   });
