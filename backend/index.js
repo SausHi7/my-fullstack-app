@@ -1,9 +1,9 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const cookieParser = require("cookie-parser");
-require("dotenv").config();
 
 const app = express();
 app.use(express.json());
@@ -14,7 +14,8 @@ app.use(
     credentials: true,
   })
 );
-//  Optional: Get rid of warnings
+console.log("MONGO_URI is:", process.env.MONGO_URI);
+//   Get rid of warnings
 mongoose.set("strictQuery", false);
 
 //  Updated MongoDB connect line (without deprecated options)
